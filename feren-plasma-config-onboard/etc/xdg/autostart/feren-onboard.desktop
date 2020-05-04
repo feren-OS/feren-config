@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Onboard
+Exec=/usr/bin/feren-launch-onboard
+Terminal=false
+NoDisplay=true
+Icon=onboard
+Type=Application
+X-KDE-autostart-after=panel

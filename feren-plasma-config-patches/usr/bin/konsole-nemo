@@ -1,0 +1,10 @@
+#!/bin/bash
+
+args=$@
+for var in $@; do
+    if [ "$var" = "-x" ]; then
+        args=$(echo $args | sed "s/-x /-e /g")
+    fi
+done
+konsole $args
+exit $?

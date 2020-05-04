@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for file in /home/*; do
+    if [ -f "$file/.config/gtk-3.0/gtk.css" ]; then
+        grep -q "headerbar .title {
+    font-size: 0pt;
+}" "$file/.config/gtk-3.0/gtk.css" && perl -i -p0e 's/headerbar .title \{.*?\}//s' "$file/.config/gtk-3.0/gtk.css"
+    fi
+done
+exit 0

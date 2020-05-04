@@ -1,0 +1,16 @@
+[Common]
+OutlineCloseButton=false
+ShadowSize=ShadowMedium
+ShadowStrength=90
+
+[Windeco]
+DrawSizeGrip=false
+DrawTitleBarSeparator=false
+
+[Windeco Exception 0]
+BorderSize=1
+Enabled=true
+ExceptionPattern=(Vivaldi-stable)
+ExceptionType=0
+HideTitleBar=true
+Mask=0

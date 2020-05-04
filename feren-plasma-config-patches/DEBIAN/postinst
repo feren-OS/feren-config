@@ -1,0 +1,47 @@
+#!/bin/bash
+
+if [ ! -f /usr/share/plasma/packages/org.kde.paneltoolbox/contents/ui/main.qml ]; then
+    echo "plasma-desktop-data" >> /etc/feren-autopackagemgmt/reinstall
+    systemctl start feren-autopackagemgmt.service &
+fi
+
+warn()
+{
+    echo "W: $1"
+}
+
+case "$1" in
+    configure)
+        # I REALLY need to change this line to set the value properly, as this method isn't that safe, but alas
+        sed -i 's/wheel:Vertical;NoModifier=org.kde.switchdesktop/wheel:Vertical;NoModifier=/g' /usr/share/plasma/shells/org.kde.plasma.desktop/contents/defaults
+        
+        fc-cache -f
+        
+        # Feren OS prefers legacy newt colors over Aubergine by default
+        if update-alternatives --query newt-palette | grep -qs "Status: auto"; then
+            update-alternatives --set newt-palette /etc/newt/palette.original || warn "Failed to update newt alternatives"
+        fi
+
+        # Clean the print driver database.
+        if [ -x /usr/sbin/foomatic-cleanupdrivers ]; then
+            foomatic-cleanupdrivers || warn "Failed to foomatic-cleanupdrivers"
+        fi
+        
+
+        ;;
+
+    abort-upgrade|abort-deconfigure|abort-remove)
+        ;;
+
+    triggered)
+        # I REALLY need to change this line to set the value properly, as this method isn't that safe, but alas
+        sed -i 's/wheel:Vertical;NoModifier=org.kde.switchdesktop/wheel:Vertical;NoModifier=/g' /usr/share/plasma/shells/org.kde.plasma.desktop/contents/defaults
+        ;;
+
+    *)
+        echo "$0 called with unknown argument \`$1'" 1>&2
+        exit 1
+        ;;
+esac
+
+exit 0

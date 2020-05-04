@@ -1,0 +1,6 @@
+/etc/skel/.config/variety/variety.conf
+/etc/skel/.config/variety/ui.conf
+/etc/skel/.config/variety/variety_latest_default.conf
+/etc/skel/.config/libreoffice/4/user/registrymodifications.xcu
+/usr/share/glib-2.0/schemas/mint-artwork.gschema.override
+/usr/share/glib-2.0/schemas/feren-oem-configurable.gschema.override

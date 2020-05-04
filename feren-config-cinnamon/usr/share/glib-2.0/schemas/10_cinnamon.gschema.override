@@ -1,0 +1,60 @@
+[org.cinnamon]
+desktop-effects-close-effect='scale'
+desktop-effects-close-time=175
+desktop-effects-close-transition='easeOutQuad'
+desktop-effects-map-effect='blend'
+desktop-effects-map-time=125
+desktop-effects-map-transition='easeOutQuad'
+desktop-effects-maximize-effect='scale'
+desktop-effects-maximize-time=75
+desktop-effects-maximize-transition='easeNone'
+desktop-effects-minimize-effect='flyDown'
+desktop-effects-minimize-time=100
+desktop-effects-minimize-transition='easeInQuad'
+desktop-effects-on-menus=true
+desktop-effects-tile-effect='scale'
+desktop-effects-tile-time=75
+desktop-effects-tile-transition='easeNone'
+desktop-effects-unmaximize-effect='scale'
+desktop-effects-unmaximize-time=75
+desktop-effects-unmaximize-transition='easeNone'
+
+enabled-applets=[ 'panel1:left:0:CinnVIIStarkMenu@NikoKrause:1', 'panel1:left:1:grouped-window-list@cinnamon.org:2', 'panel1:right:0:keyboard@cinnamon.org:3', 'panel1:right:1:user@cinnamon.org:4', 'panel1:right:2:inhibit@cinnamon.org:5', 'panel1:right:3:printers@cinnamon.org:6', 'panel1:right:4:notifications@cinnamon.org:7', 'panel1:right:5:show-hide-applets@mohammad-sn:8', 'panel1:right:6:systray@cinnamon.org:9', 'panel1:right:7:xapp-status@cinnamon.org:10', 'panel1:right:8:network@cinnamon.org:11', 'panel1:right:9:power@cinnamon.org:12', 'panel1:right:10:sound@cinnamon.org:13' ]
+enabled-extensions=[ '!transparent-panels@germanfr' ]
+
+no-adjacent-panel-barriers=true
+
+panels-height=[ '1:38', '2:38' ]
+panel-zone-icon-sizes='[{"panelId": 1, "left": 0, "center": 24, "right": 24}]'
+
+[org.cinnamon.desktop.background.slideshow]
+image-source='xml:///usr/share/cinnamon-background-properties/feren-Aluminium.xml'
+
+[org.cinnamon.desktop.interface]
+cursor-theme='DMZ-White'
+font-name='Open Sans 10'
+gtk-theme='feren'
+gtk-theme-backup='feren'
+icon-theme='Inspire'
+
+[org.cinnamon.desktop.screensaver]
+screensaver-name='xscreensaver@cinnamon.org'
+
+[org.cinnamon.desktop.wm.preferences]
+button-layout='menu:minimize,maximize,close'
+theme='feren'
+titlebar-font='Lato Light 11'
+audible-bell=true
+
+[org.cinnamon.muffin]
+tile-maximize=true
+workspace-cycle=true
+
+[org.cinnamon.sounds]
+logout-file='/usr/share/feren-os/sounds/logout.ogg'
+logout-enabled=true
+login-file='/usr/share/feren-os/sounds/login.ogg'
+login-enabled=true
+
+[org.cinnamon.theme]
+name='feren'

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -d '/etc/skel/Pictures/Sample Pictures' ]; then
+	rm -rf '/etc/skel/Pictures/Sample Pictures'
+fi
+ln -s '/usr/share/feren-os/Sample Pictures' '/etc/skel/Pictures/Sample Pictures'
+for file in /home/*; do
+    if [ -f "$file/.config/mimeapps.list" ]; then
+        sed -i 's/org.pantheon.photos-viewer.desktop/io.elementary.photos-viewer.desktop/g' "$file/.config/mimeapps.list"
+    fi
+done
+glib-compile-schemas /usr/share/glib-2.0/schemas > /dev/null

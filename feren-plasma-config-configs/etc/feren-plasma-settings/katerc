@@ -1,0 +1,29 @@
+[General]
+Config Revision=10
+Save Meta Infos=true
+Show Full Path in Title=false
+Show Menu Bar=true
+Show Status Bar=true
+Show Tab Bar=true
+Startup Session=new
+
+[MainWindow]
+ToolBarsMovable=Disabled
+State=AAAA/wAAAAD9AAAAAAAAAoAAAAGfAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+Kate-MDI-Sidebar-Visible=false
+
+[MainWindow][Toolbar mainToolBar]
+ToolButtonStyle=IconOnly
+
+[KTextEditor Document]
+Newline at End of File=false
+On-The-Fly Spellcheck=true
+Overwrite Mode=false
+
+[Shortcuts]
+kate_mdi_toolview_kate_plugin_katesearch=none
+kate_mdi_toolview_kate_private_plugin_katefileselectorplugin=none
+kate_mdi_toolview_kate_private_plugin_katefiletreeplugin=none
+kate_mdi_toolview_kate_private_plugin_katekonsoleplugin=none
+kate_mdi_toolview_kateproject=none
+kate_mdi_toolview_kateprojectinfo=none

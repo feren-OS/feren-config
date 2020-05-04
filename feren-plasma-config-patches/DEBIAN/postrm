@@ -1,0 +1,33 @@
+#!/bin/sh -e
+
+# Again, like on postinst...
+sed -i 's/wheel:Vertical;NoModifier=/wheel:Vertical;NoModifier=org.kde.switchdesktop/g' /usr/share/plasma/shells/org.kde.plasma.desktop/contents/defaults
+
+warn()
+{
+    echo "W: $1"
+}
+
+case "$1" in
+    purge)
+        ;;
+
+    remove)
+        if update-alternatives --query newt-palette | grep -qs "Value: /etc/newt/palette.original"; then
+            update-alternatives --auto newt-palette || warn "Failed to update newt alternatives"
+        fi
+        ;;
+
+    upgrade|failed-upgrade|disappear)
+        ;;
+
+    abort-install|abort-upgrade)
+        ;;
+
+    *)
+        echo "$0 called with unknown argument \`$1'" 1>&2
+        exit 1
+        ;;
+esac
+
+exit 0

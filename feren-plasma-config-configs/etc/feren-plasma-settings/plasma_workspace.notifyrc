@@ -1,0 +1,13 @@
+[Event/exitkde]
+Action=Sound
+Execute=
+Logfile=
+Sound=/usr/share/feren-os/sounds/logout.ogg
+TTS=
+
+[Event/startkde]
+Action=Sound
+Execute=
+Logfile=
+Sound=/usr/share/feren-os/sounds/login.ogg
+TTS=

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "" > "$HOME/.config/user-dirs.dirs"
+/usr/bin/xdg-user-dirs-update
+/usr/bin/feren-xdg-folder-refresh --force
+
+if [ ! -f ~/.local/share/konsole ]; then
+    cp -R /etc/skel/.local/share/konsole ~/.local/share/konsole
+fi

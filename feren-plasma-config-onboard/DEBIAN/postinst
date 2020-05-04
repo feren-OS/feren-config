@@ -1,0 +1,10 @@
+#!/bin/sh
+
+glib-compile-schemas /usr/share/glib-2.0/schemas
+
+if [ -f "/usr/share/applications/onboard.desktop" ]; then
+	kwriteconfig5 --file "/usr/share/applications/onboard.desktop" --group "Desktop Entry" --key NoDisplay "true"
+fi
+if [ -f "/usr/share/applications/onboard-settings.desktop" ]; then
+	kwriteconfig5 --file "/usr/share/applications/onboard-settings.desktop" --group "Desktop Entry" --key NoDisplay "true"
+fi

@@ -1,0 +1,7 @@
+[Actions]
+StripWhiteSpace=false
+
+[General]
+IgnoreImages=false
+KeepClipboardContents=false
+PreventEmptyClipboard=false

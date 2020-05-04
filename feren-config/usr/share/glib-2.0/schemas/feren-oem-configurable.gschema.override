@@ -1,0 +1,18 @@
+[x.dm.slick-greeter]
+background='/usr/share/wallpapers/(The Original) Login.jpg'
+draw-user-backgrounds=true
+other-monitors-logo='/usr/share/feren-os/logos/Logo BG.png'
+
+[org.gnome.desktop.background]
+primary-color="#000000"
+secondary-color="#000000"
+color-shading-type="solid"
+picture-uri='file:///usr/share/wallpapers/(Vanadium) Default.jpg'
+picture-options="zoom"
+
+[org.nemo.desktop]
+computer-icon-visible=false
+home-icon-visible=false
+volumes-visible=false
+trash-icon-visible=false
+network-icon-visible=false

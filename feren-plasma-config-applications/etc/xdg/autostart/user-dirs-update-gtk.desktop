@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Exec=feren-xdg-folder-refresh
+Name=User folders update
+Comment=Update common folders names to match current locale
+Terminal=false
+NotShowIn=LXQt;
+NoDisplay=true
+Type=Application
+StartupNotify=false
+X-KDE-autostart-after=panel
+X-Ubuntu-Gettext-Domain=xdg-user-dirs-gtk

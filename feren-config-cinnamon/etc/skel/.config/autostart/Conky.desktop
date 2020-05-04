@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=conky
+Name=Conky
+Icon=cs-desklets
+Terminal=false
+Comment[en_GB]=Time Applet for your Desktop.
+X-GNOME-Autostart-Delay=9

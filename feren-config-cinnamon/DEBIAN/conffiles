@@ -1,0 +1,12 @@
+/etc/skel/.gconf/apps/docky-2/%gconf.xml
+/etc/skel/.gconf/apps/docky-2/Docky/%gconf.xml
+/etc/skel/.gconf/apps/docky-2/Docky/Services/%gconf.xml
+/etc/skel/.gconf/apps/docky-2/Docky/Services/ThemeService/%gconf.xml
+/etc/skel/.gconf/apps/docky-2/Docky/Items/DockyItem/%gconf.xml
+/etc/skel/.gconf/apps/docky-2/Docky/Items/ColoredIconDockItem/%gconf.xml
+/etc/skel/.gconf/apps/docky-2/Docky/Interface/%gconf.xml
+/etc/skel/.gconf/apps/docky-2/Docky/Interface/DockPreferences/%gconf.xml
+/etc/skel/.gconf/apps/docky-2/Docky/Interface/DockPreferences/Dock1/%gconf.xml
+/etc/skel/.conkyrc
+/usr/share/glib-2.0/schemas/10_cinnamon.gschema.override
+/usr/share/glib-2.0/schemas/feren-oem-configurable-cinnamon.gschema.override

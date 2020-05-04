@@ -1,0 +1,51 @@
+#!/bin/bash
+
+rm ~/.config/autostart/feren-os-setup.desktop
+
+rm ~/.config/user-dirs.dirs
+xdg-user-dirs-update
+xdg-user-dirs-gtk-update
+while read -r line; do
+	export $line
+done < <(tail -n +8 ~/.config/user-dirs.dirs)
+
+export XDG_DESKTOP_DIR=$(eval echo $XDG_DESKTOP_DIR)
+DESKTOPDIRNM=$(echo "$XDG_DESKTOP_DIR" | sed "s%$HOME/%%g")
+export XDG_DOCUMENTS_DIR=$(eval echo $XDG_DOCUMENTS_DIR)
+DOCUMENTSDIRNM=$(echo "$XDG_DOCUMENTS_DIR" | sed "s%$HOME/%%g")
+export XDG_MUSIC_DIR=$(eval echo $XDG_MUSIC_DIR)
+MUSICDIRNM=$(echo "$XDG_MUSIC_DIR" | sed "s%$HOME/%%g")
+export XDG_PICTURES_DIR=$(eval echo $XDG_PICTURES_DIR)
+PICTURESDIRNM=$(echo "$XDG_PICTURES_DIR" | sed "s%$HOME/%%g")
+export XDG_VIDEOS_DIR=$(eval echo $XDG_VIDEOS_DIR)
+VIDEOSDIRNM=$(echo "$XDG_VIDEOS_DIR" | sed "s%$HOME/%%g")
+export XDG_DOWNLOAD_DIR=$(eval echo $XDG_DOWNLOAD_DIR)
+DOWNLOADDIRNM=$(echo "$XDG_DOWNLOAD_DIR" | sed "s%$HOME/%%g")
+
+if [ ! "$PICTURESDIRNM" = "Pictures" ]; then
+	mv -f "$HOME/Pictures/Sample Pictures" "$HOME/$PICTURESDIRNM/Sample Pictures"
+	if [ -z "$(ls -A ~/Pictures)" ]; then
+	   rm -rf "$HOME/Pictures"
+	fi
+fi
+if [ ! "$DESKTOPDIRNM" = "Desktop" ] && [ -d /etc/skel/Desktop ]; then
+    olddir="$(pwd)"
+    cd /etc/skel/Desktop
+    if [ -z "$(ls -A /etc/skel/Desktop)" ]; then
+        for file in *; do
+            if [ ! -f "$HOME/$DESKTOPDIRNM/$file" ]; then
+                mv -f "$HOME/Desktop/$file" "$HOME/$DESKTOPDIRNM/$file"
+            fi
+        done
+    fi
+    cd "$olddir"
+	if [ -z "$(ls -A ~/Desktop)" ]; then
+	   rm -rf "$HOME/Desktop"
+	fi
+fi
+
+if [ -f /usr/bin/feren-set-kde-settings ]; then
+    /usr/bin/feren-set-kde-settings
+fi
+
+exit 0

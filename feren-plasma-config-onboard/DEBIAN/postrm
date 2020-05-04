@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -f "/usr/share/applications/onboard.desktop" ]; then
+	kwriteconfig5 --file "/usr/share/applications/onboard.desktop" --group "Desktop Entry" --key NoDisplay "false"
+fi
+if [ -f "/usr/share/applications/onboard-settings.desktop" ]; then
+	kwriteconfig5 --file "/usr/share/applications/onboard-settings.desktop" --group "Desktop Entry" --key NoDisplay "false"
+fi

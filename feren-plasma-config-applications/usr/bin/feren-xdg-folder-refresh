@@ -1,0 +1,202 @@
+#!/bin/bash
+
+if [[ ! "$DESKTOP_SESSION" == *"plasma" ]] && [[ ! "$DESKTOP_SESSION" = *"kde" ]]; then
+	exit 0
+fi
+
+originalfiledata="$(cat "$HOME/.config/user-dirs.dirs")"
+
+/usr/bin/xdg-user-dirs-gtk-update
+
+if [ ! "$(cat "$HOME/.config/user-dirs.dirs")" == "$originalfiledata" ] || [ "$1" = "--force" ]; then
+    #File changed so we'll reset the bookmarks
+    while read -r line; do
+        export "$line"
+    done < <(tail -n +8 ~/.config/user-dirs.dirs)
+    export XDG_DESKTOP_DIR=$(eval echo $XDG_DESKTOP_DIR)
+    DESKTOPDIRNM=$(echo "$XDG_DESKTOP_DIR" | sed "s^$HOME/^^g")
+    export XDG_DOCUMENTS_DIR=$(eval echo $XDG_DOCUMENTS_DIR)
+    DOCUMENTSDIRNM=$(echo "$XDG_DOCUMENTS_DIR" | sed "s^$HOME/^^g")
+    echo "file://$XDG_DOCUMENTS_DIR $DOCUMENTSDIRNM" > ~/.config/gtk-3.0/bookmarks
+    export XDG_MUSIC_DIR=$(eval echo $XDG_MUSIC_DIR)
+    MUSICDIRNM=$(echo "$XDG_MUSIC_DIR" | sed "s^$HOME/^^g")
+    echo "file://$XDG_MUSIC_DIR $MUSICDIRNM" >> ~/.config/gtk-3.0/bookmarks
+    export XDG_PICTURES_DIR=$(eval echo $XDG_PICTURES_DIR)
+    PICTURESDIRNM=$(echo "$XDG_PICTURES_DIR" | sed "s^$HOME/^^g")
+    echo "file://$XDG_PICTURES_DIR $PICTURESDIRNM" >> ~/.config/gtk-3.0/bookmarks
+    export XDG_VIDEOS_DIR=$(eval echo $XDG_VIDEOS_DIR)
+    VIDEOSDIRNM=$(echo "$XDG_VIDEOS_DIR" | sed "s^$HOME/^^g")
+    echo "file://$XDG_VIDEOS_DIR $VIDEOSDIRNM" >> ~/.config/gtk-3.0/bookmarks
+    export XDG_DOWNLOAD_DIR=$(eval echo $XDG_DOWNLOAD_DIR)
+    DOWNLOADDIRNM=$(echo "$XDG_DOWNLOAD_DIR" | sed "s^$HOME/^^g")
+    echo "file://$XDG_DOWNLOAD_DIR $DOWNLOADDIRNM" >> ~/.config/gtk-3.0/bookmarks
+    
+    HOME=$(python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$HOME")
+    XDG_DESKTOP_DIR=$(python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$XDG_DESKTOP_DIR")
+    XDG_DOCUMENTS_DIR=$(python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$XDG_DOCUMENTS_DIR")
+    XDG_MUSIC_DIR=$(python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$XDG_MUSIC_DIR")
+    XDG_PICTURES_DIR=$(python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$XDG_PICTURES_DIR")
+    XDG_VIDEOS_DIR=$(python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$XDG_VIDEOS_DIR")
+    XDG_DOWNLOAD_DIR=$(python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$XDG_DOWNLOAD_DIR")
+
+    echo '<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xbel>
+<xbel xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:kdepriv="http://www.kde.org/kdepriv">
+ <bookmark href="file://'"$HOME"'">
+  <title>'"$(getent passwd "$USER" | cut -d: -f5 | cut -d, -f1)"'</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="user-home"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1539168646/1</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file://'"$XDG_DESKTOP_DIR"'">
+  <title>'"$DESKTOPDIRNM"'</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="user-desktop"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1539168646/1</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file://'"$XDG_DOCUMENTS_DIR"'">
+  <title>'"$DOCUMENTSDIRNM"'</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-documents"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1539168646/1</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file://'"$XDG_MUSIC_DIR"'">
+  <title>'"$MUSICDIRNM"'</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-music"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1539168646/1</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file://'"$XDG_PICTURES_DIR"'">
+  <title>'"$PICTURESDIRNM"'</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-pictures"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1539168646/1</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file://'"$XDG_VIDEOS_DIR"'">
+  <title>'"$VIDEOSDIRNM"'</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-videos"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1539168646/1</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file://'"$XDG_DOWNLOAD_DIR"'">
+  <title>'"$DOWNLOADDIRNM"'</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-downloads"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1539168646/2</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///">
+  <title>File System</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="device-harddisk"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1539168646/4</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///media/'"$(whoami)"'">
+  <title>More Drives</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="drive-harddisk-usb"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1539168646/4</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="trash:/">
+  <title>Trash</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="user-trash-full"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1539168646/5</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="remote:/">
+  <title>Network</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="network-workgroup"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1539168646/3</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <info>
+  <metadata owner="http://www.kde.org">
+   <GroupState-Places-IsHidden>false</GroupState-Places-IsHidden>
+   <GroupState-Remote-IsHidden>false</GroupState-Remote-IsHidden>
+   <GroupState-Devices-IsHidden>false</GroupState-Devices-IsHidden>
+   <GroupState-RemovableDevices-IsHidden>false</GroupState-RemovableDevices-IsHidden>
+   <withBaloo>false</withBaloo>
+   <GroupState-SearchFor-IsHidden>true</GroupState-SearchFor-IsHidden>
+   <GroupState-RecentlySaved-IsHidden>false</GroupState-RecentlySaved-IsHidden>
+  </metadata>
+ </info>
+</xbel>' > ~/.local/share/user-places.xbel
+fi
+
+exit 0

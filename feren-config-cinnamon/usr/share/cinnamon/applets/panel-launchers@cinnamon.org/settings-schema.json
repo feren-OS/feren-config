@@ -1,0 +1,15 @@
+{
+    "section1": {
+        "type": "section",
+        "description": "Behavior"
+    },
+    "launcherList": {
+        "type": "generic",
+        "default": ["vivaldi-stable.desktop", "nemo.desktop", "feren-store.desktop"]
+    },
+    "allow-dragging": {
+        "type": "switch",
+        "default": true,
+        "description": "Allow dragging of launchers"
+    }
+}

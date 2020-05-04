@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ "$1" == "wait-lock" ]; then
+    sleep 0.4
+    rm -f /tmp/onboard-toggle-lock-$(whoami)
+    exit 0
+fi
+
+if [ -f /tmp/onboard-toggle-lock-$(whoami) ]; then
+    exit 0
+fi
+
+touch /tmp/onboard-toggle-lock-$(whoami)
+dbus-send --type=method_call --dest=org.onboard.Onboard /org/onboard/Onboard/Keyboard org.onboard.Onboard.Keyboard.ToggleVisible
+"$0" wait-lock &
+while [ -z "$(xdotool search --classname onboard)" ]; do
+    :
+done
+for wid in $(xdotool search --classname onboard); do xprop -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 -id $wid; done

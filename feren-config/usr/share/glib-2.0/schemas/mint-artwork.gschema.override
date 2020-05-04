@@ -1,0 +1,61 @@
+[x.dm.slick-greeter]
+theme-name='feren'
+icon-theme-name='Inspire'
+font-name='Open Sans 11'
+draw-grid=false
+logo='/usr/share/feren-os/logos/Logo Small BG.png'
+
+[org.gnome.desktop.interface]
+cursor-theme='DMZ-White'
+gtk-key-theme='Default'
+gtk-theme='feren'
+icon-theme='Inspire'
+toolkit-accessibility=false
+font-name="Open Sans 10"
+monospace-font-name="Monospace 10"
+document-font-name="Noto Sans 10"
+
+[org.gnome.metacity.theme]
+name="feren"
+type="metacity"
+
+[org.gnome.desktop.background]
+show-desktop-icons=true
+
+[org.gnome.desktop.wm.preferences]
+button-layout='menu:minimize,maximize,close'
+num-workspaces=4
+titlebar-font='Lato Light 11'
+titlebar-uses-system-font=false
+
+[org.gnome.desktop.sound]
+theme-name="LinuxMint"
+event-sounds=false
+input-feedback-sounds=false
+
+[org.gnome.settings-daemon.plugins.xsettings]
+hinting="slight"
+
+[org.nemo.desktop]
+ignored-desktop-handlers=['conky']
+font="Open Sans 10"
+
+[org.nemo.window-state]
+start-with-status-bar=false
+start-with-menu-bar=true
+
+[org.nemo.preferences]
+thumbnail-limit=4294967295
+disable-menu-warning=false
+show-edit-icon-toolbar=false
+show-full-path-titles=false
+show-hidden-files=false
+show-compact-view-icon-toolbar=true
+show-location-entry=false
+show-places-in-to-menus=true
+show-up-icon-toolbar=true
+show-reload-icon-toolbar=false
+tooltips-on-desktop=true
+tooltips-show-access-date=true
+tooltips-show-file-type=true
+tooltips-show-path=true

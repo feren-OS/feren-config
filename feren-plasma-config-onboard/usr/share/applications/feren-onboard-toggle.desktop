@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Toggle Onboard
+Comment=Toggle visiblity of Onboard
+Exec=feren-toggle-onboard
+Terminal=false
+NoDisplay=true
+Type=Application
+Categories=Utility;Accessibility;
+Keywords=onscreen;keyboard;accessibility;utility;
+Icon=onboard
+X-Ubuntu-Gettext-Domain=onboard

@@ -1,0 +1,2 @@
+[org.cinnamon.desktop.default-applications.terminal]
+exec='konsole-nemo'

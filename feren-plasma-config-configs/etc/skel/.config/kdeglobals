@@ -1,0 +1,4 @@
+[KDE]
+ShowIconsInMenuItems=true
+ShowIconsOnPushButtons=false
+SingleClick=false

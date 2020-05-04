@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Set-up Feren OS
+Categories=Utility;
+Comment=Do some things in Feren OS to give the user the most optimal experience possible
+Exec=/usr/bin/feren-os-setup
+Hidden=false
+Icon=distributor-logo
+NoDisplay=false
+Terminal=false
+Type=Application

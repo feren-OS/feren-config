@@ -1,0 +1,30 @@
+[org.onboard]
+layout='/usr/share/onboard/layouts/Small.onboard'
+show-status-icon=false
+start-minimized=true
+theme='Feren'
+system-theme-associations={'HighContrast': 'HighContrast', 'HighContrastInverse': 'HighContrastInverse', 'LowContrast': 'LowContrast', 'ContrastHighInverse': 'HighContrastInverse', 'Default': 'Feren'}
+
+[org.onboard.icon-palette]
+window-handles=''
+
+[org.onboard.keyboard]
+key-press-modifiers={}
+touch-feedback-enabled=false
+
+[org.onboard.lockdown]
+disable-click-buttons=true
+disable-touch-handles=true
+
+[org.onboard.theme-settings]
+color-scheme='/usr/share/onboard/themes/Black.colors'
+key-label-font='Open Sans'
+roundrect-radius=24
+
+[org.onboard.window.landscape]
+dock-height=215
+
+[org.onboard.window]
+background-transparency=50
+docking-enabled=true
+window-handles=''
